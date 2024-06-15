@@ -9,7 +9,8 @@ namespace opsqlite {
 
 namespace jsi = facebook::jsi;
 
-using BatchParams = std::variant<std::vector<JSVariant>, std::vector<std::vector<JSVariant>>>;
+using BatchParams =
+    std::variant<std::vector<JSVariant>, std::vector<std::vector<JSVariant>>>;
 
 struct BatchArguments {
   std::string sql;

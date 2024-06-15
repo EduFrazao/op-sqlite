@@ -78,9 +78,9 @@ BridgeResult opsqlite_close(std::string const &dbName) {
 
 /**
  * Used to get a validated connection from reference map
- * Internal method, to bese use in bridge calls that run batch commands and can benefit
- * of single-time connection checking
-*/
+ * Internal method, to bese use in bridge calls that run batch commands and can
+ * benefit of single-time connection checking
+ */
 sqlite3 *opsqlite_get_connection(std::string const &dbName) {
   check_db_open(dbName);
   return dbMap[dbName];
@@ -189,17 +189,16 @@ BridgeResult opsqlite_execute_prepared_statement(
     std::vector<DumbHostObject> *results,
     std::shared_ptr<std::vector<SmartHostObject>> metadatas) {
 
-    check_db_open(dbName);
-    sqlite3 *db = dbMap[dbName];
+  check_db_open(dbName);
+  sqlite3 *db = dbMap[dbName];
 
-    sqlite3_reset(statement);
+  sqlite3_reset(statement);
 
-    return opsqlite_execute_prepared_statement(db, statement, results, metadatas);
+  return opsqlite_execute_prepared_statement(db, statement, results, metadatas);
 }
 
 BridgeResult opsqlite_execute_prepared_statement(
-    sqlite3 *db, sqlite3_stmt *statement,
-    std::vector<DumbHostObject> *results,
+    sqlite3 *db, sqlite3_stmt *statement, std::vector<DumbHostObject> *results,
     std::shared_ptr<std::vector<SmartHostObject>> metadatas) {
 
   const char *errorMessage;
@@ -339,7 +338,6 @@ sqlite3_stmt *opsqlite_prepare_statement(std::string const &dbName,
 
 sqlite3_stmt *opsqlite_prepare_statement(sqlite3 *db,
                                          std::string const &query) {
-
 
   sqlite3_stmt *statement;
 
@@ -696,9 +694,8 @@ BridgeResult opsqlite_execute_literal(std::string const &dbName,
 
 /// Executes without returning any results, Useful for performance critical
 /// operations
-BridgeResult opsqlite_execute_literal(sqlite3 *db,
-                                      std::string const &query) {
-  
+BridgeResult opsqlite_execute_literal(sqlite3 *db, std::string const &query) {
+
   sqlite3_stmt *statement;
 
   int statementStatus =

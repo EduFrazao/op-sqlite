@@ -47,8 +47,7 @@ BridgeResult opsqlite_execute_raw(std::string const &dbName,
                                   const std::vector<JSVariant> *params,
                                   std::vector<std::vector<JSVariant>> *results);
 
-BridgeResult opsqlite_execute_literal(sqlite3 *db,
-                                      std::string const &query);
+BridgeResult opsqlite_execute_literal(sqlite3 *db, std::string const &query);
 
 BridgeResult opsqlite_execute_literal(std::string const &dbName,
                                       std::string const &query);
@@ -69,7 +68,6 @@ sqlite3_stmt *opsqlite_prepare_statement(std::string const &dbName,
                                          std::string const &query);
 sqlite3_stmt *opsqlite_prepare_statement(sqlite3 *connection,
                                          std::string const &query);
-
 
 void opsqlite_bind_statement(sqlite3_stmt *statement,
                              const std::vector<JSVariant> *params);
